@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Format Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .textBox {
+            width: 80%;
+            max-width: 500px;
+            height: 150px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 10px;
+            resize: vertical;
+            white-space: pre-wrap; /* To preserve white spaces and line breaks */
+        }
+
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="inputBox" class="textBox" placeholder="Paste text here"></textarea>
+    <textarea id="outputBox" class="textBox" placeholder="Formatted text will appear here" readonly></textarea>
+    <button class="button" onclick="reformatText()">Reformat Text</button>
+
+    <script>
+        function reformatText() {
+            var inputText = document.getElementById("inputBox").value;
+            // Directly assigning the text to outputBox, maintaining line breaks
+            document.getElementById("outputBox").value = inputText;
+        }
+    </script>
+</body>
+</html>
