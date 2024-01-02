@@ -12,13 +12,14 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
+            zoom: 125%; /* Set default zoom to 125% */
         }
 
         .textBox {
             width: 80%;
             max-width: 500px;
             height: 150px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             padding: 10px;
             border-radius: 8px;
             border: 1px solid #ddd;
@@ -27,13 +28,19 @@
             white-space: pre-wrap; /* To preserve white spaces and line breaks */
         }
 
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+
         .button {
-            padding: 10px 20px;
+            padding: 5px 10px;
+            margin: 5px;
             border: none;
             border-radius: 5px;
             background-color: #4CAF50;
             color: white;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
@@ -46,13 +53,21 @@
 <body>
     <textarea id="inputBox" class="textBox" placeholder="Paste text here"></textarea>
     <textarea id="outputBox" class="textBox" placeholder="Formatted text will appear here" readonly></textarea>
-    <button class="button" onclick="reformatText()">Reformat Text</button>
+    <div class="button-container">
+        <button class="button" onclick="reformatText()">Reformat Text</button>
+        <button class="button" onclick="clearText()">Clear</button>
+    </div>
 
     <script>
         function reformatText() {
             var inputText = document.getElementById("inputBox").value;
-            // Directly assigning the text to outputBox, maintaining line breaks
-            document.getElementById("outputBox").value = inputText;
+            var formattedText = inputText.replace(/\*/g, ''); // Updated line
+            document.getElementById("outputBox").value = formattedText;
+        }
+
+        function clearText() {
+            document.getElementById("inputBox").value = '';
+            document.getElementById("outputBox").value = '';
         }
     </script>
 </body>
